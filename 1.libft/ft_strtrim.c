@@ -6,7 +6,7 @@
 /*   By: hyunkim <hyunkim@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/24 04:04:06 by hyunkim           #+#    #+#             */
-/*   Updated: 2020/08/05 03:49:00 by hyunkim          ###   ########.fr       */
+/*   Updated: 2020/08/10 18:00:02 by hyunkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,13 @@ char			*ft_strtrim(char const *s1, char const *set)
 	start = start_point(s1, set);
 	end = end_point(s1, set);
 	if (start > end)
-		return (NULL);
+	{
+		res = (char *)malloc(1);
+		if (res == NULL)
+			return (NULL);
+		res[0] = '\0';
+		return (res);
+	}
 	length = end - start + 1;
 	res = (char *)malloc((length + 1) * sizeof(char));
 	if (res == NULL)
