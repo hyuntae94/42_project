@@ -1,4 +1,4 @@
 # 42_project
-42SEOUL_Innovation Academy  즐겁게하자
+42SEOUL_Innovation Academy
 
 1.libft
