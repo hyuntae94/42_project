@@ -12,102 +12,58 @@
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *str)
-{
-	size_t index;
-
-	index = 0;
-	while (str[index])
-		index++;
-	return (index);
-}
-
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	char	*res;
-	size_t	s1_len;
-	size_t	s2_len;
-	int		index;
-
-	if (s1 == NULL || s2 == NULL)
-		return (NULL);
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	res = (char*)malloc((s1_len + s2_len + 1) * sizeof(char));
-	if (res == NULL)
-		return (NULL);
-	index = 0;
-	while (*s1 != '\0')
-		res[index++] = *s1++;
-	while (*s2 != '\0')
-		res[index++] = *s2++;
-	res[index] = '\0';
-	return (res);
-}
-
-char	*ft_strdup(const char *str)
+size_t	ft_strlen(const char *s)
 {
 	size_t	len;
-	char	*res;
-	size_t	index;
 
-	index = 0;
-	len = ft_strlen(str);
-	res = (char*)malloc((len + 1) * sizeof(char));
-	if (res == NULL)
-		return (NULL);
-	while (index < len)
-	{
-		res[index] = str[index];
-		index++;
-	}
-	res[index] = '\0';
-	return (res);
+	len = 0;
+	while (s[len])
+		len++;
+	return (len);
 }
 
-void	*ft_memset(void *ptr, int input_char, size_t num)
+char	*ft_strdup(const char *s)
 {
-	size_t	index;
-	char	*str;
-	char	ch;
+	char	*dup;
+	int		slen;
+	int		i;
 
-	str = ptr;
-	ch = input_char;
-	index = 0;
-	while (index < num)
-	{
-		str[index] = ch;
-		index++;
-	}
-	return (ptr);
-}
-
-char	*ft_strchr(const char *str, int c)
-{
-	size_t i;
-
+	slen = ft_strlen(s);
 	i = 0;
-	if (c == 0)
-		return ((char *)str + ft_strlen(str));
-	while (str[i])
+	if (!(dup = (char *)malloc(sizeof(char) * (slen + 1))))
+		return (0);
+	while (s[i])
 	{
-		if (str[i] == (char)c)
-			return ((char *)str + i);
+		dup[i] = s[i];
 		i++;
 	}
-	return (0);
+	dup[i] = 0;
+	return (dup);
 }
 
-char	*ft_strcpy(char *s1, const char *s2)
+char	*strjoin_free(char *temp, char *buf)
 {
-	int index;
+	char	*str;
+	int		i;
+	int		j;
 
-	index = 0;
-	while (s2[index])
+	if (!temp)
+		return (ft_strdup(buf));
+	if (!buf)
+		return (0);
+	if (!(str = (char *)malloc(sizeof(char) * (ft_strlen(temp) + ft_strlen(buf) + 1))))
+		return (0);
+	i = 0;
+	while (temp[i])
 	{
-		s1[index] = s2[index];
-		index++;
+		str[i] = temp[i];
+		i++;
 	}
-	s1[index] = '\0';
-	return (s1);
+	free(temp);
+	temp = 0;
+	j = -1;
+	while (buf[++j])
+		str[i + j] = buf[j];
+	str[i + j] = 0;
+	return (str);
 }

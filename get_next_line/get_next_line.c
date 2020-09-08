@@ -12,47 +12,58 @@
 
 #include "get_next_line.h"
 
-char	*check_remainder(char *remainder, char **line)
+static int	newline_index(char *s)
 {
-	char *p_n;
+	int	i;
 
-	p_n = NULL;
-	if (remainder)
-		if (p_n = ft_strchr(remainder, '\n'))
-		{
-			*p_n = '\0';
-			*line = ft_strdup(remainder);
-			ft_strcpy(remainder, ++p_n);
-		}
-		else
-		{
-			*line = ft_strdup(remainder);
-			remainder = ft_memset(remainder, 0, ft_strlen(remainder));
-		}
-	else
-		*line = ft_memset(*line, 0, ft_strlen(*line));
-	return (p_n);
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == '\n')
+			return (i);
+		i++;
+	}
+	return (-1);
 }
 
-int		get_next_line(int fd, char **line)
+static int	return_line(char **temp, char **line, int i)
+{
+	char	*p_next;
+
+	(*temp)[i] = 0;
+	*line = ft_strdup(*temp);
+	i++;
+	p_next = ft_strdup(*temp + i);
+	free(*temp);
+	*temp = p_next;
+	return (1);
+}
+
+int			get_next_line(int fd, char **line)
 {
 	char		buf[BUFFER_SIZE + 1];
-	int			byte_was_read;
-	char		*p_n;
-	static char	*remainder;
-	char		*tmp;
+	int			read_size;
+	static char	*temp;
+	int			i;
 
-	p_n = check_remainder(remainder, line);
-	while (!p_n && (byte_was_read = read(fd, buf, BUFFER_SIZE)))
+	if (!line || fd < 0 || BUFFER_SIZE <= 0 || read(fd, buf, 0) < 0)
+		return (-1);
+	while ((read_size = read(fd, buf, BUFFER_SIZE)) > 0)
 	{
-		buf[byte_was_read] = '\0';
-		if (p_n = ft_strchr(buf, '\n'))
-		{
-			*p_n = '\0';
-			p_n++;
-			remainder = ft_strdup(p_n);
-		}
-		*line = ft_strjoin(*line, buf);
+		buf[read_size] = '\0';
+		temp = strjoin_free(temp, buf);
+		if ((i = newline_index(temp)) != -1)
+			return (return_line(&temp, line, i));
 	}
-	return (byte_was_read || ft_strlen(remainder) || ft_strlen(*line)) ? 1 : 0;
+	if (temp && (i = newline_index(temp)) != -1)
+		return (return_line(&temp, line, i));
+	if (temp)
+	{
+		*line = ft_strdup(temp);
+		free(temp);
+		temp = 0;
+		return (0);
+	}
+	*line = ft_strdup("");
+	return (0);
 }

@@ -13,7 +13,6 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -21,13 +20,10 @@
 #  define BUFFER_SIZE 10
 # endif
 
+size_t	ft_strlen(const char *s);
+char	*strjoin_free(char *s1, char *s2);
+char	*ft_strdup(const char *s);
+
 int		get_next_line(int fd, char **line);
-char	*check_remainder(char *remainder, char **line);
-size_t	ft_strlen(const char *str);
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strdup(const char *str);
-void	*ft_memset(void *ptr, int input_char, size_t num);
-char	*ft_strchr(const char *str, int c);
-char	*ft_strcpy(char *s1, const char *s2);
 
 #endif
