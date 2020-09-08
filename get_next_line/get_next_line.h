@@ -6,7 +6,7 @@
 /*   By: hyunkim <hyunkim@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/08 18:15:13 by hyunkim           #+#    #+#             */
-/*   Updated: 2020/09/08 20:41:34 by hyunkim          ###   ########.fr       */
+/*   Updated: 2020/09/09 03:04:26 by hyunkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
+#  define BUFFER_SIZE 1000
 # endif
 
 size_t	ft_strlen(const char *s);

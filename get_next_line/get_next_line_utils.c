@@ -6,7 +6,7 @@
 /*   By: hyunkim <hyunkim@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/08 20:22:12 by hyunkim           #+#    #+#             */
-/*   Updated: 2020/09/08 20:43:11 by hyunkim          ###   ########.fr       */
+/*   Updated: 2020/09/09 03:16:06 by hyunkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,56 +14,56 @@
 
 size_t	ft_strlen(const char *s)
 {
-	size_t	len;
+	size_t	index;
 
-	len = 0;
-	while (s[len])
-		len++;
-	return (len);
+	index = 0;
+	while (s[index])
+		index++;
+	return (index);
 }
 
 char	*ft_strdup(const char *s)
 {
-	char	*dup;
+	char	*res;
 	int		slen;
-	int		i;
+	int		index;
 
 	slen = ft_strlen(s);
-	i = 0;
-	if (!(dup = (char *)malloc(sizeof(char) * (slen + 1))))
+	index = 0;
+	if (!(res = (char *)malloc(sizeof(char) * (slen + 1))))
 		return (0);
-	while (s[i])
+	while (s[index])
 	{
-		dup[i] = s[i];
-		i++;
+		res[index] = s[index];
+		index++;
 	}
-	dup[i] = 0;
-	return (dup);
+	res[index] = 0;
+	return (res);
 }
 
-char	*strjoin_free(char *temp, char *buf)
+char	*strjoin_free(char *remainder, char *buf)
 {
 	char	*str;
 	int		i;
 	int		j;
 
-	if (!temp)
+	if (!remainder)
 		return (ft_strdup(buf));
 	if (!buf)
 		return (0);
-	if (!(str = (char *)malloc(sizeof(char) * (ft_strlen(temp) + ft_strlen(buf) + 1))))
+	if (!(str = (char *)malloc(sizeof(char) * (ft_strlen(remainder) + ft_strlen(buf) + 1))))
 		return (0);
 	i = 0;
-	while (temp[i])
+	while (remainder[i])
 	{
-		str[i] = temp[i];
+		str[i] = remainder[i];
 		i++;
 	}
-	free(temp);
-	temp = 0;
-	j = -1;
-	while (buf[++j])
-		str[i + j] = buf[j];
+	free(remainder);
+	remainder = 0;
+	j = 0;
+	while (buf[j])
+		str[i + j] = buf[j++];
 	str[i + j] = 0;
 	return (str);
 }
