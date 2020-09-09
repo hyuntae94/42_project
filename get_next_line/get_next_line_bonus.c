@@ -1,14 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunkim <hyunkim@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/08 00:47:03 by hyunkim           #+#    #+#             */
-/*   Updated: 2020/09/09 12:37:06 by hyunkim          ###   ########.fr       */
+/*   Created: 2020/09/09 12:33:29 by hyunkim           #+#    #+#             */
+/*   Updated: 2020/09/09 13:00:53 by hyunkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "get_next_line.h"
 
@@ -43,7 +44,7 @@ int			get_next_line(int fd, char **line)
 {
 	char		buf[BUFFER_SIZE + 1];
 	int			read_size;
-	static char	*remainder;
+	static char	*remainder[_SC_OPEN_MAX];
 	int			i;
 
 	if (!line || fd < 0 || BUFFER_SIZE <= 0 || read(fd, buf, 0) < 0)
@@ -51,17 +52,17 @@ int			get_next_line(int fd, char **line)
 	while ((read_size = read(fd, buf, BUFFER_SIZE)) > 0)
 	{
 		buf[read_size] = 0;
-		remainder = ft_strjoin(remainder, buf);
-		if ((i = newline_index(remainder)) != -1)
-			return (return_line(&remainder, line, i));
+		remainder[fd] = ft_strjoin(remainder[fd], buf);
+		if ((i = newline_index(remainder[fd])) != -1)
+			return (return_line(&remainder[fd], line, i));
 	}
-	if (remainder && (i = newline_index(remainder)) != -1)
-		return (return_line(&remainder, line, i));
-	if (remainder)
+	if (remainder[fd] && (i = newline_index(remainder[fd])) != -1)
+		return (return_line(&remainder[fd], line, i));
+	if (remainder[fd])
 	{
-		*line = ft_strdup(remainder);
-		free(remainder);
-		remainder = 0;
+		*line = ft_strdup(remainder[fd]);
+		free(remainder[fd]);
+		remainder[fd] = 0;
 		return (0);
 	}
 	*line = ft_strdup("");

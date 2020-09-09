@@ -1,0 +1,3 @@
+Selective immunoglobulin A deficiency (SIgAD) is a primary immunodeficiency disease and is the most common of the primary antibody deficiencies.
+Total immunoglobulin A deficiency (IgAD) is defined as an undetectable serum immunoglobulin A (IgA) level at a value < 5 mg/dL (0.05 g/L) in humans.
+Partial IgAD refers to detectable but decreased IgA levels that are more than 2 standard deviations below normal age-adjusted means.
