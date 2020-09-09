@@ -27,28 +27,52 @@ int		main(void)
 	while ((value = get_next_line(fd1,&line)) > 0)
 	{
 		printf("%s\n",line);
-		printf("%d\n", value);
+		printf("@@@ %d @@@\n", value);
 	}
 	printf("%s\n",line);
-	printf("%d\n", value);
+	printf("@@@ %d\n @@@", value);
 	return (0);*/
 
 	fd1 = open("text.txt",O_RDONLY);
 	fd2 = open ("text1.txt",O_RDONLY);
 
-	get_next_line(fd1,&line);
-	printf("fd1 First line : %s\n\n",line);
+	value = get_next_line(fd1,&line);
+	printf("fd1 line : %s\n\n",line);
+	printf("value : @@ %d @@ \n\n",value);
 	free(line);
 
-	get_next_line(fd2,&line);
-	printf("fd2 First line : %s\n\n", line);
+	value = get_next_line(fd2,&line);
+	printf("fd2 line : %s\n\n", line);
+	printf("value : @@ %d @@ \n\n",value);
 	free(line);
 
-	get_next_line(fd1,&line);
-	printf("fd1 Second line : %s\n\n",line);
+	value = get_next_line(fd1,&line);
+	printf("fd1 line : %s\n\n",line);
+	printf("value : @@ %d @@ \n\n",value);
 	free(line);
 
-	get_next_line(fd2,&line);
-	printf("fd2 Second line : %s\n\n",line);
+	value = get_next_line(fd2,&line);
+	printf("fd2 line : %s\n\n",line);
+	printf("value : @@ %d @@ \n\n",value);
+	free(line);
+
+	value = get_next_line(fd1,&line);
+	printf("fd1 line : %s\n\n",line);
+	printf("value : @@ %d @@ \n\n",value);
+	free(line);
+
+	value = get_next_line(fd2,&line);
+	printf("fd2 line : %s\n\n",line);
+	printf("value : @@ %d @@ \n\n",value);
+	free(line);
+
+	value = get_next_line(fd1,&line);
+	printf("fd1 line : %s\n\n",line);
+	printf("value : @@ %d @@ \n\n",value);
+	free(line);
+
+	value = get_next_line(fd2,&line);
+	printf("fd2 line : %s\n\n",line);
+	printf("value : @@ %d @@ \n\n",value);
 	free(line);
 }

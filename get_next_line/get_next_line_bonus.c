@@ -6,7 +6,7 @@
 /*   By: hyunkim <hyunkim@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 12:33:29 by hyunkim           #+#    #+#             */
-/*   Updated: 2020/09/09 13:00:53 by hyunkim          ###   ########.fr       */
+/*   Updated: 2020/09/09 14:29:17 by hyunkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int			get_next_line(int fd, char **line)
 {
 	char		buf[BUFFER_SIZE + 1];
 	int			read_size;
-	static char	*remainder[_SC_OPEN_MAX];
+	static char	*remainder[OPEN_MAX];
 	int			i;
 
 	if (!line || fd < 0 || BUFFER_SIZE <= 0 || read(fd, buf, 0) < 0)
