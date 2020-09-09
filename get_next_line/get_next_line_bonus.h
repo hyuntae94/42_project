@@ -6,12 +6,12 @@
 /*   By: hyunkim <hyunkim@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 12:38:44 by hyunkim           #+#    #+#             */
-/*   Updated: 2020/09/09 14:37:06 by hyunkim          ###   ########.fr       */
+/*   Updated: 2020/09/09 14:57:30 by hyunkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <stdlib.h>
 # include <unistd.h>

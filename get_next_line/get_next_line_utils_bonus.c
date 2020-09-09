@@ -6,11 +6,11 @@
 /*   By: hyunkim <hyunkim@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 12:39:39 by hyunkim           #+#    #+#             */
-/*   Updated: 2020/09/09 12:41:12 by hyunkim          ###   ########.fr       */
+/*   Updated: 2020/09/09 14:58:31 by hyunkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(const char *s)
 {
@@ -51,7 +51,8 @@ char	*ft_strjoin(char *remainder, char *buf)
 		return (ft_strdup(buf));
 	if (!buf)
 		return (0);
-	if (!(str = (char *)malloc(sizeof(char) * (ft_strlen(remainder) + ft_strlen(buf) + 1))))
+	if (!(str = (char *)
+	malloc(sizeof(char) * (ft_strlen(remainder) + ft_strlen(buf) + 1))))
 		return (0);
 	i = 0;
 	while (remainder[i])

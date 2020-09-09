@@ -6,12 +6,11 @@
 /*   By: hyunkim <hyunkim@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 12:33:29 by hyunkim           #+#    #+#             */
-/*   Updated: 2020/09/09 14:29:17 by hyunkim          ###   ########.fr       */
+/*   Updated: 2020/09/09 14:58:43 by hyunkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static int	newline_index(char *s)
 {
