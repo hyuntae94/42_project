@@ -6,7 +6,7 @@
 /*   By: hyunkim <hyunkim@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 12:38:44 by hyunkim           #+#    #+#             */
-/*   Updated: 2020/09/09 14:28:59 by hyunkim          ###   ########.fr       */
+/*   Updated: 2020/09/09 14:37:06 by hyunkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1000
+# endif
+
+# ifndef OPEN_MAX
+#  define OPEN_MAX 1000
 # endif
 
 size_t	ft_strlen(const char *s);
