@@ -6,7 +6,7 @@
 /*   By: hyunkim <hyunkim@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/08 20:22:12 by hyunkim           #+#    #+#             */
-/*   Updated: 2020/09/09 12:37:38 by hyunkim          ###   ########.fr       */
+/*   Updated: 2020/09/09 13:29:08 by hyunkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ char	*ft_strjoin(char *remainder, char *buf)
 		return (ft_strdup(buf));
 	if (!buf)
 		return (0);
-	if (!(str = (char *)malloc(sizeof(char) * (ft_strlen(remainder) + ft_strlen(buf) + 1))))
+	if (!(str =
+	(char *)malloc(sizeof(char) * (ft_strlen(remainder) + ft_strlen(buf) + 1))))
 		return (0);
 	i = 0;
 	while (remainder[i])
@@ -61,9 +62,9 @@ char	*ft_strjoin(char *remainder, char *buf)
 	}
 	free(remainder);
 	remainder = 0;
-	j = 0;
-	while (buf[j])
-		str[i + j] = buf[j++];
+	j = -1;
+	while (buf[++j])
+		str[i + j] = buf[j];
 	str[i + j] = 0;
 	return (str);
 }
