@@ -6,7 +6,7 @@
 /*   By: hyunkim <hyunkim@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 12:39:39 by hyunkim           #+#    #+#             */
-/*   Updated: 2020/09/09 14:58:31 by hyunkim          ###   ########.fr       */
+/*   Updated: 2020/09/09 15:35:05 by hyunkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ char	*ft_strjoin(char *remainder, char *buf)
 	}
 	free(remainder);
 	remainder = 0;
-	j = 0;
-	while (buf[j])
-		str[i + j] = buf[j++];
+	j = -1;
+	while (buf[++j])
+		str[i + j] = buf[j];
 	str[i + j] = 0;
 	return (str);
 }
