@@ -69,8 +69,4 @@ int main(void)
 	printf("printf(\"%%+p\", ptr)\n");
 	printf("\t\tundefined behavior warning: flag '+' with 'p'\n");
 	printf("\n\n");
-	printf("%.p\n", NULL);
-	printf("%.0p\n", NULL);
-	printf("%.p\n", ptr);
-	printf("%.0p\n", ptr);
 }
