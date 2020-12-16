@@ -6,7 +6,7 @@
 /*   By: hyunkim <hyunkim@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 23:41:34 by hyunkim           #+#    #+#             */
-/*   Updated: 2020/12/16 16:36:55 by hyunkim          ###   ########.fr       */
+/*   Updated: 2020/12/16 21:36:55 by hyunkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,11 @@ void	print_c(t_info *info, va_list ap, const char *form)
 		data = va_arg(ap, int);//data에 출력할 문자 저장
 	else
 		data = '%';
-	i = -1;//?
-	if (info->flag != 1)//'0','-'플래그 존재X
+	i = -1;
+	if (info->flag == 2)
+		while (++i < info->width - 1)
+			write(1, &"0", 1);
+	if (info->flag == 0)//'0','-'플래그 존재X
 		while (++i < info->width - 1)
 			write(1, &" ", 1);
 	write(1, &data, 1);
