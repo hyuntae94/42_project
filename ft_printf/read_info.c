@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunkim <hyunkim@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/09 15:19:02 by hyunkim           #+#    #+#             */
+/*   Created: 2020/12/01 15:19:02 by hyunkim           #+#    #+#             */
 /*   Updated: 2020/12/09 15:19:02 by hyunkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -54,7 +54,11 @@ const char	*read_prec(const char *form, t_info *info, va_list ap)
 	if (info->prec == 0 && info->flag == 2 && *form != '%')
 	//정밀도 값이 0이고 '0'플래그와 서식지정자 %외 다른 지정자가 사용되었다면 '0'플래그는 무시.
 		info->flag = 0;
-	if (info->prec == 0)//정밀도가 0인지 아닌지 파악하기 위한 point_zero
+	if (info->prec == 0)
+	//point_zero를 사용하는이유
+	//printf("[%*s]\n", 3, "hello");
+	//printf("[%*.s]\n", 3, "hello");
+	//두가지 경우의 수를 구별하기 위해서
 		info->point_zero = 1;
 	return (form);
 }

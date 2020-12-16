@@ -6,7 +6,7 @@
 /*   By: hyunkim <hyunkim@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 21:59:07 by hyunkim           #+#    #+#             */
-/*   Updated: 2020/11/29 21:59:07 by hyunkim          ###   ########.fr       */
+/*   Updated: 2020/12/14 02:48:36 by hyunkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void				ft_putthex2(unsigned long long n);
 int					leng(long long n, const char *form);
 
 void				ft_put_data(long long data, const char *form);
-void				ft_putdeci(long long data);
-void				ft_puthex(unsigned long long n);
-void				ft_puthex2(unsigned long long n);
+void				ft_putdata(long long data);
+void				ft_puthex(unsigned long long data);
+void				ft_puthex2(unsigned long long data);
 
 #endif
