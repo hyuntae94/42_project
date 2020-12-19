@@ -20,6 +20,7 @@ void	print_diux_1(t_info *info, int *size, long long data, const char *form)
 	//정밀도가 길이보다 클때
 	//정밀도가 음수일때
 	{
+		//길이가 가장큰경우는 길이만 출력
 		if (info->prec <= leng(data, form) && leng(data, form) <= info->width)
 		//폭이 가장 큰경우 case1
 		//"[%04d]",100 =>[0100], "[%04.*d]",-6,100 =>[0100]
@@ -33,14 +34,15 @@ void	print_diux_1(t_info *info, int *size, long long data, const char *form)
 		}
 		else if (info->width <= info->prec && leng(data, form) <= info->prec)
 		//정밀도가 가장 큰 경우에는 폭과 데이터의 크기순서는 중요하지않다.
-		//[%2.5d]\n",100 => [00100]//폭이 정밀도 보다 작으면 폭은 무시된다.
+		//[%02.5d]\n",100 => [00100]//폭이 정밀도 보다 작으면 폭은 무시된다.
 			size[1] = info->prec - leng(data, form);//'0'의 갯수
 		if (data < 0 && info->prec < leng(data, form))
 		//정밀도가 길이보다 크다면 '-'부호는 '0'개수에 영향을 주지않고 사용된다.
+		//"[%04.5d]",-100 => [-00100]
 		//"[%04d]",-100 =>[-100]
 			size[1]--;//'-'부호를 넣기위해서 '0'하나빼준다.
 	}
-	else
+	else//공백을 0이 안메꾸는코드
 	{
 		size[1] = info->prec - leng(data, form);
 		if (size[1] < 0)//정밀도가 작다면 정밀도는 필요없다.
@@ -93,6 +95,9 @@ void	print_diux(t_info *info, va_list ap, const char *form)
 	else if (*form == 'd' || *form == 'i')
 		data = va_arg(ap, int);
 	arr_init(size, 2);
+	//[0]공백
+	//[1]0개수
+	//line 66
 	if (info->prec <= leng(data, form))//정밀도 보다 출력하는 개수가 더 크고
 	{
 		if (info->prec > 0 && info->flag == 2)//정밀도가 0보다 크고 플래그 '0'이 존재한다면

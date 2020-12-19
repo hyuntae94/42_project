@@ -4,14 +4,24 @@
 
 int main(void)
 {
-      /*print_cps 26~28코드추가
-      First line of code: {return test("%05%")}
-      expected output : "0000%"
-      your output     : "    %"
-      expected (nonprintable as hex) : "0000%"
-      actual   (nonprintable as hex) : "    %"
-      */
-      /*print_cps 26번째 코드추가
+/*
+"%0*.*u, %0*.*x, %0*.*X, %0*.*u, %0*.*x, %0*.*X, %0*.*u, %0*.*x, %0*.*X, %0*.*u, %0*.*x, %0*.*X, %0*.*u, %0*.*x, %0*.*X, %0*.*u, %0*.*x, %0*.*X, %0*.*u, %0*.*x, %0*.*X, %0*.*u, %0*.*x, %0*.*X" // 1st '*' = 4, 2nd '*' = 0
+
+1c1
+< 0008, 0008, 0008, 4294967284, fffffff4, FFFFFFF4, 123456789, 75bcd15, 75BCD15, 000, 000, 000, 4282621618, ff439eb2, FF439EB2, 0097, 0061, 0061, 2147483647, 7fffffff, 7FFFFFFF, 2147483648, 80000000, 80000000 --- Return : 206
+---
+>    8,    8,    8, 4294967284, fffffff4, FFFFFFF4, 123456789, 75bcd15, 75BCD15,     ,     ,     , 4282621618, ff439eb2, FF439EB2,   97,   61,   61, 2147483647, 7fffffff, 7FFFFFFF, 2147483648, 80000000, 80000000 --- Return : 209
+
+%0*.*i, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d" // 1st '*' = 4, 2nd '*' = 0
+
+1c1
+< 0008, -012, 123456789, 000, -12345678, 0097, -2147483648, 2147483647 --- Return : 68
+---
+>    8,  -12, 123456789,     , -12345678,   97, -2147483648, 2147483647 --- Return : 69
+
+*/
+
+ /*print_cps line26 코드추가
        First line of code: {return test("%05%");}
       expected return value : 5
       your return value     : 5
@@ -19,8 +29,9 @@ int main(void)
       your output     : "%"
       expected (nonprintable as hex) : "0000%"
       actual   (nonprintable as hex) : "%"
-	*/
-      /*
+*/
+
+/*
 	print_cps.c 55번째 코드 추가
 First line of code: {return test("%.0p", 0);}
       expected return value : 2
@@ -36,8 +47,10 @@ First line of code: {return test("%2.p", NULL);}
       expected output : "0x"
       your output     : "0x0"
       expected (nonprintable as hex) : "0x"
-      actual   (nonprintable as hex) : "0x0"*/
-	/*
+      actual   (nonprintable as hex) : "0x0"
+*/
+
+/*
 	print_cps 117코드 < 0 대신 <= 0을 사용한 이유
 	Test 728 (new2019_star_3) : FAILED.
     First line of code: {return test("%*s", 3, "hello");} 폭3 정밀도 X, 데이터5
@@ -46,10 +59,11 @@ First line of code: {return test("%2.p", NULL);}
       expected output : "hello"
       your output     : "   "
       expected (nonprintable as hex) : "hello"
-      actual   (nonprintable as hex) : "   "*/
+      actual   (nonprintable as hex) : "   "
+*/
 
 /*
-print_diux 90~96 코드
+print_diux 98~102 코드
 Test 246 (d_prec_width_nf_pos_zp) : FAILED.
     First line of code: {return test("%08.3d", 8375);}
       expected output : "    8375"
@@ -113,8 +127,8 @@ Test 465 (X_prec_width_nf_pos_zp) : FAILED.
 	ft_printf("%d\n",ft_printf("[%5c]\t",'a'));
 	ft_printf("%d\n",ft_printf("[%05c]\t",'a'));
 	ft_printf("%d\n",ft_printf("[%-05c]\t",'a'));
-*/
-/*
+
+
       int *pa = 0;
 	int b = 10;
 	int *pb = &b;
@@ -125,8 +139,8 @@ Test 465 (X_prec_width_nf_pos_zp) : FAILED.
 	ft_printf("%d\n",ft_printf("[%20p]\t",pb));
 	ft_printf("%d\n",ft_printf("[%-20p]\t",pb));
 	ft_printf("%d\n",ft_printf("[%-020p]\t",pb));
-*/
-/*
+
+
       ft_printf("%d\n",ft_printf("[%s]\t","abc")-3);
       ft_printf("%d\n",ft_printf("[%.s]\t","abc")-3);
       ft_printf("%d\n",ft_printf("[%.4s]\t","abc")-3);
@@ -136,7 +150,7 @@ Test 465 (X_prec_width_nf_pos_zp) : FAILED.
       ft_printf("%d\n",ft_printf("[%05.4s]\t","abc")-3);
       ft_printf("%d\n",ft_printf("[%-05s]\t","abc")-3);
 */
-/*
+
       ft_printf("%d\n",ft_printf("[%8d]\t", 8375)-3);
       ft_printf("%d\n",ft_printf("[%-08d]\t", 8375)-3);
       ft_printf("%d\n",ft_printf("[%08d]\t", 8375)-3);
@@ -151,6 +165,6 @@ Test 465 (X_prec_width_nf_pos_zp) : FAILED.
       ft_printf("%d\n",ft_printf("[%08.3x]\t", 8375)-3);
       ft_printf("%d\n",ft_printf("[%08.3X]\t", 8375)-3);
       ft_printf("%d\n",ft_printf("[%04.2i]\t",42)-3);
-*/
+
 }
 

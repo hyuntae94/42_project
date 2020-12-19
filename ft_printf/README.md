@@ -1,6 +1,6 @@
 출처 https://modoocode.com/35
 * printf 형식문자열
-%[플래그(flag)][폭(width)][.정밀도][크기(length)]서식 문자(specifier)
+%[플래그(flag)][폭(width)][.정밀도]서식 문자(specifier)
 * 서식문자
 - c : 문자
 - s : 문자열
@@ -11,7 +11,7 @@
 - X : 부호없는 16진법으로 나타낸 정수(대문자사용) ex)7FA
 - % : % 다음에 %를 또 붙이면 stdout에 %를 출력한다.
 
-* flag => -, 0, ., *
+* flag => -, 0
 
 * va_arg
 var_type va_arg(va_list ap, var_type);

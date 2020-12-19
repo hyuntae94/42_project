@@ -75,8 +75,9 @@ void	print_s_1(t_info *info, int *size, char *data)
 	//"%1.4s","abc" =>[abc]
 		size[0] = ft_strlen(data);
 	else if (info->prec <= info->width && info->prec <= ft_strlen(data))
-	//"%3s","abcd" => [abcd]
-	//정밀도가 가장 작은경우에는 폭과 data의 상관관계는 중요하지않다.
+	//"%5s","abcd" => [ abcd]
+	//"%5.2s","abcd" => [   ab]
+	//정밀도가 가장 작은 경우에는 폭과 data의 상관관계는 중요하지않다.
 	{
 		size[0] = info->prec;
 		size[1] = info->width - info->prec;//[1]에는 문자출력하고 남은 공간
@@ -85,8 +86,8 @@ void	print_s_1(t_info *info, int *size, char *data)
 	//"%4.3s","ab"=>[  ab]
 	//data문자열의 길이가 가장 작을 경우 폭과 정밀도의 상관관계는 중요하지않다.
 	{
-		size[0] = ft_strlen(data);//[0]에는 출력될 문자의 개수
-		size[1] = info->width - ft_strlen(data);//전체 출력 개수 - 문자개수
+		size[0] = ft_strlen(data);
+		size[1] = info->width - ft_strlen(data);
 	}
 	if (info->point_zero)
 	//정밀도가 존재하고 그 값이 0인경우 예외처리코드
@@ -115,7 +116,7 @@ void	print_s(t_info *info, va_list ap)
 		data = ft_strdup("(null)");
 	if (info->prec <= 0)
 	//정밀도가 존재하고 그 값이 0인 코드는 따로 처리 ,여기서는 다루지않는다.
-	//line 77코드
+	//line 54
 		info->prec = ft_strlen(data);
 	print_s_1(info, size, data);
 	i = -1;

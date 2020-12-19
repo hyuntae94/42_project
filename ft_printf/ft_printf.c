@@ -44,9 +44,9 @@ int			parse(va_list ap, const char *form)
 	int		ret;
 
 	ret = 0;
-	while (*form)//form이 존재하지않으면 0반환
+	while (*form)
 	{
-		if (*form == '%')//%가 아니면 else if
+		if (*form == '%')
 		{
 			form++;
 			if (!(form = read_info(ap, form, &ret)))
